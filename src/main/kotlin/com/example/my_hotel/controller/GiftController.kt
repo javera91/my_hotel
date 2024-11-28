@@ -19,8 +19,23 @@ class GiftController {
     @GetMapping
     fun getGifts() = giftService.getGifts()
 
+    @GetMapping("/{id}")
+    fun getGiftById(@PathVariable id: Long): Gift {
+        return giftService.getGiftById(id)
+    }
+
     @PostMapping
     fun save(@RequestBody @Valid giftDto: GiftDto): Gift {
         return giftService.save(giftDto)
+    }
+
+    @PutMapping("/{id}")
+    fun updateGift(@PathVariable id: Long, @RequestBody @Valid giftDto: GiftDto): Gift {
+        return giftService.updateGift(id, giftDto)
+    }
+
+    @DeleteMapping("/{id}")
+    fun deleteGift(@PathVariable id: Long) {
+        giftService.deleteGift(id)
     }
 }

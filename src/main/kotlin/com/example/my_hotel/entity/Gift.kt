@@ -14,5 +14,5 @@ class Gift {
 
     var description: String? = null
     var expirationDate: LocalDate? = null
-
+    var guestId: Long? = null
 }

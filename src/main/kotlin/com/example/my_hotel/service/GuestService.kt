@@ -30,10 +30,8 @@ class GuestService {
     }
 
     fun updateGuest(id: Long, guestDto: GuestDto): Guest{
-        // Verifica si el huésped existe antes de actualizar
-        val existingGuest = getGuestById(id)
-        // Convierte el GuestDto a una entidad Guest y mantiene el ID existente
-        val updateGuest = GuestMapper.toEntity(guestDto).apply {
+        val existingGuest = getGuestById(id) // Verifica si el huésped existe antes de actualizar
+        val updateGuest = GuestMapper.toEntity(guestDto).apply { // Convierte el GuestDto a una entidad Guest y mantiene el ID existente
             this.id = existingGuest.id // Preserva el ID del huésped existente
         }
         return guestRepository.save(updateGuest) // Guarda el huésped actualizado en la base de datos
